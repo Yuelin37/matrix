@@ -3,7 +3,6 @@ var term = require('terminal-kit').terminal ;
 
 function terminate() {
   setTimeout( function() {
-			//term.brightBlack( 'About to exit...\n' ) ;
     term.grabInput( false ) ;
     term.fullscreen( false ) ;
     term.applicationKeypad( false ) ;
@@ -13,8 +12,7 @@ function terminate() {
       clearInterval(matrix[i].printHandle);
       clearInterval(matrix[i].ereaseHandle);
     }
-
-		// Add a 100ms delay, so the terminal will be ready when the process effectively exit, preventing bad escape sequences drop
+    // Add a 100ms delay, so the terminal will be ready when the process effectively exit, preventing bad escape sequences drop
     setTimeout( function() { process.exit() ; } , 100 ) ;
   } , 100 ) ;
 }
