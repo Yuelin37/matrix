@@ -1,8 +1,7 @@
-var term = require( 'terminal-kit' ).terminal ;
+var term = require('terminal-kit').terminal ;
 
 
-function terminate()
-	{
+function terminate() {
   setTimeout( function() {
 			//term.brightBlack( 'About to exit...\n' ) ;
     term.grabInput( false ) ;
@@ -15,25 +14,22 @@ function terminate()
       clearInterval(matrix[i].ereaseHandle);
     }
 
-			// Add a 100ms delay, so the terminal will be ready when the process effectively exit, preventing bad escape sequences drop
+		// Add a 100ms delay, so the terminal will be ready when the process effectively exit, preventing bad escape sequences drop
     setTimeout( function() { process.exit() ; } , 100 ) ;
   } , 100 ) ;
 }
 
 
 
-	// Switch to fullscreen (alternate) buffer mode
+// Switch to fullscreen (alternate) buffer mode
 term.fullscreen() ;
 
 term.hideCursor();
 
-
-
-term.grabInput( { mouse: 'button' , focus: true } ) ;
+term.grabInput( {mouse: 'button' , focus: true} ) ;
 // term.requestCursorLocation().requestScreenSize() ;
 var randomPower = 1000;
-function randomChar()
-{
+function randomChar() {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqr' +
   '\'\"stuvwxyz0123456789!@#$%&*()+{}<>/åßç√†®∑œ¥øπ¬∆µ≤≥÷↑←' +
@@ -44,7 +40,7 @@ function randomChar()
   return text;
 }
 
-function getInterval(){
+function getInterval() {
   var interval = Math.floor(Math.random()*randomPower);
   if (interval < 20){
     interval += 10;
