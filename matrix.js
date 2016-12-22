@@ -2,30 +2,30 @@ var term = require('terminal-kit').terminal ;
 
 
 function terminate() {
-  setTimeout( function() {
-    term.grabInput( false ) ;
-    term.fullscreen( false ) ;
-    term.applicationKeypad( false ) ;
+  setTimeout(function() {
+    term.grabInput(false);
+    term.fullscreen(false);
+    term.applicationKeypad(false);
     term.hideCursor(false);
-    // term.beep() ;
+    // term.beep();
+
+    // stop drawing screen before quit.
     for (let i = 1; i < term.width; i++) {
       clearInterval(matrix[i].printHandle);
       clearInterval(matrix[i].ereaseHandle);
     }
     // Add a 100ms delay, so the terminal will be ready when the process effectively exit, preventing bad escape sequences drop
-    setTimeout( function() { process.exit() ; } , 100 ) ;
-  } , 100 ) ;
+    setTimeout(function() {process.exit();}, 100);
+  }, 100);
 }
 
 
 
 // Switch to fullscreen (alternate) buffer mode
 term.fullscreen() ;
-
 term.hideCursor();
-
 term.grabInput( {mouse: 'button' , focus: true} ) ;
-// term.requestCursorLocation().requestScreenSize() ;
+
 var randomPower = 1000;
 function randomChar() {
   var text = '';
@@ -121,8 +121,8 @@ for (let i = 1; i < term.width; i++) {
 }
 
 
-term.on( 'key' , function( key ) {
-  switch ( key ){
+term.on('key' , function(key) {
+  switch (key){
   case 'q':
   case 'CTRL_C' : terminate();
     break;
